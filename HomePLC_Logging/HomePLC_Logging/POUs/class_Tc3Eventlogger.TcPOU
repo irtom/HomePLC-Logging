@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="class_Tc3Eventlogger" Id="{ac0f92ca-dd80-4ab2-83d4-0bd7b2376817}" SpecialFunc="None">
+    <Declaration><![CDATA[// Event logger based on the TC3 Eventlogger
+FUNCTION_BLOCK class_Tc3Eventlogger
+VAR
+	fbMessageVerbose		: FB_TcMessage;		// Verbose message, e.g. for debugging
+	fbMessageInfo			: FB_TcMessage;		// Info message, e.g. for event logging
+	fbMessageWarning		: FB_TcMessage;		// Warning message
+	fbMessageError			: FB_TcMessage;		// Error message
+	hrLastError				: HRESULT;			// Last error when sending a message
+	
+	bEnableVerbose			: BOOL;				// Enable verbose messages
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// In order to use this FB, an event class named "Eventlogger" needs to be created under SYSTEM/Type System/Event classes
+// The event class needs to have two events:
+// - Name: VerboseEvent, Display Text: {0}, Severity: Verbose
+// - Name: InfoEvent, Display Text: {0}, Severity: Info]]></ST>
+    </Implementation>
+    <Folder Name="Methods" Id="{d4dc9b66-a7a6-47a5-957f-0c57a55b49f6}" />
+    <Method Name="AddDebug" Id="{2e35c2b0-2172-425f-86ba-e9d236113781}" FolderPath="Methods\">
+      <Declaration><![CDATA[// Add a debug message (verbose)
+METHOD AddDebug : BOOL
+VAR_INPUT
+	Message		: STRING;			// Message to log
+END_VAR
+VAR
+	hr			: HRESULT;			// Result of sending the message
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF bEnableVerbose THEN
+	// Add input message to arguments
+	fbMessageVerbose.ipArguments.Clear().AddString(Message);
+	
+	// Send message
+	hr := fbMessageVerbose.Send(0);
+	
+	// Check if send failed
+	IF FAILED(hr) THEN
+		// Store last error
+		hrLastError := hr;
+	END_IF
+END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="AddError" Id="{78cace4f-4b12-4c45-9f34-991974dc1361}" FolderPath="Methods\">
+      <Declaration><![CDATA[// Add an info message
+METHOD AddError : BOOL
+VAR_INPUT
+	Message		: STRING;			// Message to log
+END_VAR
+VAR
+	hr			: HRESULT;			// Result of sending the message
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// Add input message to arguments
+fbMessageError.ipArguments.Clear().AddString(Message);
+
+// Send message
+hr := fbMessageError.Send(0);
+
+// Check if send failed
+IF FAILED(hr) THEN
+	// Store last error
+	hrLastError := hr;
+END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="AddInfo" Id="{37b3f5ce-e824-4450-9e5c-14b869bbd7c3}" FolderPath="Methods\">
+      <Declaration><![CDATA[// Add an info message
+METHOD AddInfo : BOOL
+VAR_INPUT
+	Message		: STRING;			// Message to log
+END_VAR
+VAR
+	hr			: HRESULT;			// Result of sending the message
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// Add input message to arguments
+fbMessageInfo.ipArguments.Clear().AddString(Message);
+
+// Send message
+hr := fbMessageInfo.Send(0);
+
+// Check if send failed
+IF FAILED(hr) THEN
+	// Store last error
+	hrLastError := hr;
+END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="AddWarning" Id="{3602e0c3-3be5-4d45-be44-5048077a412f}" FolderPath="Methods\">
+      <Declaration><![CDATA[// Add an info message
+METHOD AddWarning : BOOL
+VAR_INPUT
+	Message		: STRING;			// Message to log
+END_VAR
+VAR
+	hr			: HRESULT;			// Result of sending the message
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// Add input message to arguments
+fbMessageWarning.ipArguments.Clear().AddString(Message);
+
+// Send message
+hr := fbMessageWarning.Send(0);
+
+// Check if send failed
+IF FAILED(hr) THEN
+	// Store last error
+	hrLastError := hr;
+END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Init" Id="{a3558547-3016-43c3-8438-d78587ee22d6}" FolderPath="Methods\">
+      <Declaration><![CDATA[// Initialize the logger
+METHOD Init : BOOL
+VAR_INPUT
+	sSource			: STRING;					// Name to be used as the source of the messages
+	bEnableVerbose	: BOOL;						// Enable verbose messages
+END_VAR
+VAR
+	fbSourceInfo	: FB_TcSourceInfo;			// Source info
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// Set source
+fbSourceInfo.Clear();
+fbSourceInfo.sName := sSource;
+
+// Create messages
+fbMessageVerbose.CreateEx(TC_EVENTS.EventLogger.VerboseEvent, fbSourceInfo);
+fbMessageInfo.CreateEx(TC_EVENTS.EventLogger.InfoEvent, fbSourceInfo);
+fbMessageWarning.CreateEx(TC_EVENTS.EventLogger.WarningEvent, fbSourceInfo);
+fbMessageError.CreateEx(TC_EVENTS.EventLogger.ErrorEvent, fbSourceInfo);
+
+// Enable/disable logging
+THIS^.bEnableVerbose := bEnableVerbose;]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="class_Tc3Eventlogger">
+      <LineId Id="20" Count="3" />
+    </LineIds>
+    <LineIds Name="class_Tc3Eventlogger.AddDebug">
+      <LineId Id="31" Count="0" />
+      <LineId Id="19" Count="0" />
+      <LineId Id="4" Count="0" />
+      <LineId Id="20" Count="0" />
+      <LineId Id="15" Count="0" />
+      <LineId Id="3" Count="0" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="21" Count="0" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="23" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="16" Count="0" />
+      <LineId Id="32" Count="0" />
+    </LineIds>
+    <LineIds Name="class_Tc3Eventlogger.AddError">
+      <LineId Id="19" Count="0" />
+      <LineId Id="4" Count="0" />
+      <LineId Id="20" Count="0" />
+      <LineId Id="15" Count="0" />
+      <LineId Id="3" Count="0" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="21" Count="0" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="23" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="16" Count="0" />
+    </LineIds>
+    <LineIds Name="class_Tc3Eventlogger.AddInfo">
+      <LineId Id="19" Count="0" />
+      <LineId Id="4" Count="0" />
+      <LineId Id="20" Count="0" />
+      <LineId Id="15" Count="0" />
+      <LineId Id="3" Count="0" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="21" Count="0" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="23" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="16" Count="0" />
+    </LineIds>
+    <LineIds Name="class_Tc3Eventlogger.AddWarning">
+      <LineId Id="19" Count="0" />
+      <LineId Id="4" Count="0" />
+      <LineId Id="20" Count="0" />
+      <LineId Id="15" Count="0" />
+      <LineId Id="3" Count="0" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="21" Count="0" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="23" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="16" Count="0" />
+    </LineIds>
+    <LineIds Name="class_Tc3Eventlogger.Init">
+      <LineId Id="14" Count="0" />
+      <LineId Id="8" Count="0" />
+      <LineId Id="13" Count="0" />
+      <LineId Id="15" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="3" Count="0" />
+      <LineId Id="16" Count="0" />
+      <LineId Id="24" Count="1" />
+      <LineId Id="36" Count="0" />
+      <LineId Id="35" Count="0" />
+      <LineId Id="34" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

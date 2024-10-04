@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <FileVersion>1.0.0.0</FileVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1ccc0721-7474-413d-8f0f-41aba161363c}</ProjectGuid>
+    <SubObjectsSortedByName>True</SubObjectsSortedByName>
+    <DownloadApplicationInfo>true</DownloadApplicationInfo>
+    <WriteProductVersion>true</WriteProductVersion>
+    <GenerateTpy>false</GenerateTpy>
+    <Name>HomePLC_Logging</Name>
+    <ProgramVersion>3.1.4024.0</ProgramVersion>
+    <Application>{e84ee437-06ad-436a-9c96-8d1fe8a9833c}</Application>
+    <TypeSystem>{1999d615-0e8d-48ef-980e-aadfee62140f}</TypeSystem>
+    <Implicit_Task_Info>{a78bad78-8e51-4c7c-a9d6-c0d71d6ec72e}</Implicit_Task_Info>
+    <Implicit_KindOfTask>{d641c5be-539c-45ea-9703-612f9c9b9753}</Implicit_KindOfTask>
+    <Implicit_Jitter_Distribution>{9b7667c0-5838-41a2-9499-efa9535b0390}</Implicit_Jitter_Distribution>
+    <LibraryReferences>{c3ca03ad-d827-4bc0-a9ac-90d9226fc115}</LibraryReferences>
+    <Company>Tom Oyen</Company>
+    <Released>false</Released>
+    <Title>HomePLC Logging</Title>
+    <ProjectVersion>1.0</ProjectVersion>
+    <DefaultNamespace>
+    </DefaultNamespace>
+    <Placeholder>
+    </Placeholder>
+    <Author>Tom Oyen</Author>
+    <Description>Logging</Description>
+    <PreserveCompiledLibComments>true</PreserveCompiledLibComments>
+    <LibraryCategories>
+      <LibraryCategory>
+        <Id>{b8416a00-dcbd-4e41-b1cd-0b85e53fe91c}</Id>
+        <Version>1.0.0.0</Version>
+        <DefaultName>HomePLC</DefaultName>
+      </LibraryCategory>
+    </LibraryCategories>
+    <SelectedLibraryCategories>
+      <Id>{b8416a00-dcbd-4e41-b1cd-0b85e53fe91c}</Id>
+    </SelectedLibraryCategories>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="PlcTask.TcTTO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\class_Tc3Eventlogger.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\E_MessageType.TcTLEO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\LogMessage.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Project Information\F_GetCompany.TcPOU">
+      <SubType>Code</SubType>
+      <SystemCall>true</SystemCall>
+    </Compile>
+    <Compile Include="Project Information\F_GetTitle.TcPOU">
+      <SubType>Code</SubType>
+      <SystemCall>true</SystemCall>
+    </Compile>
+    <Compile Include="Project Information\F_GetVersion.TcPOU">
+      <SubType>Code</SubType>
+      <SystemCall>true</SystemCall>
+    </Compile>
+    <Compile Include="Version\Global_Version.TcGVL">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="POUs" />
+    <Folder Include="Project Information" />
+    <Folder Include="Version" />
+  </ItemGroup>
+  <ItemGroup>
+    <PlaceholderReference Include="Tc2_Standard">
+      <DefaultResolution>Tc2_Standard, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc2_Standard</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="Tc2_System">
+      <DefaultResolution>Tc2_System, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc2_System</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="Tc3_EventLogger">
+      <DefaultResolution>Tc3_EventLogger, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc3_EventLogger</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="Tc3_Module">
+      <DefaultResolution>Tc3_Module, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc3_Module</Namespace>
+    </PlaceholderReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="HomePLC_Logging.tmc">
+      <SubType>Content</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <PinnedGlobalDataType Include="ST_EventLogger" />
+  </ItemGroup>
+  <ProjectExtensions>
+    <PlcProjectOptions>
+      <XmlArchive>
+        <Data>
+          <o xml:space="preserve" t="OptionKey">
+      <v n="Name">"&lt;ProjectRoot&gt;"</v>
+      <d n="SubKeys" t="Hashtable" />
+      <d n="Values" t="Hashtable" />
+    </o>
+        </Data>
+        <TypeList>
+          <Type n="Hashtable">System.Collections.Hashtable</Type>
+          <Type n="OptionKey">{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}</Type>
+          <Type n="String">System.String</Type>
+        </TypeList>
+      </XmlArchive>
+    </PlcProjectOptions>
+  </ProjectExtensions>
+</Project>

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.47">
+	<Project ProjectGUID="{7CBD24C7-F335-4C14-BA30-4C3C4631CB77}" Target64Bit="true" ShowHideConfigurations="#x106">
+		<Plc>
+			<Project GUID="{1CCC0721-7474-413D-8F0F-41ABA161363C}" Name="HomePLC_Logging" PrjFilePath="HomePLC_Logging\HomePLC_Logging.plcproj" TmcFilePath="HomePLC_Logging\HomePLC_Logging.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e"/>
+		</Plc>
+	</Project>
+</TcSmProject>
