@@ -1,5 +1,34 @@
 <?xml version="1.0"?>
-<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.47">
+<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.53">
+	<DataTypes>
+		<DataType>
+			<Name GUID="{50E12B4F-BAFC-4C53-9881-039BE03719A9}" Namespace="Event logger" PersistentType="true">EventLogger</Name>
+			<DisplayName TxtId=""><![CDATA[Event logger]]></DisplayName>
+			<EventId>
+				<Name Id="1">VerboseEvent</Name>
+				<DisplayName TxtId=""><![CDATA[{0}]]></DisplayName>
+				<Severity>Verbose</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="2">InfoEvent</Name>
+				<DisplayName TxtId=""><![CDATA[{0}]]></DisplayName>
+				<Severity>Info</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="3">WarningEvent</Name>
+				<DisplayName TxtId=""><![CDATA[{0}]]></DisplayName>
+				<Severity>Warning</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="4">ErrorEvent</Name>
+				<DisplayName TxtId=""><![CDATA[{0}]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<Hides>
+				<Hide GUID="{01D4E662-4F67-4944-8C78-BA6799A26ED8}"/>
+			</Hides>
+		</DataType>
+	</DataTypes>
 	<Project ProjectGUID="{7CBD24C7-F335-4C14-BA30-4C3C4631CB77}" Target64Bit="true" ShowHideConfigurations="#x106">
 		<Plc>
 			<Project GUID="{1CCC0721-7474-413D-8F0F-41ABA161363C}" Name="HomePLC_Logging" PrjFilePath="HomePLC_Logging\HomePLC_Logging.plcproj" TmcFilePath="HomePLC_Logging\HomePLC_Logging.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e"/>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <POU Name="LogMessage" Id="{a2c69cf0-3e79-41ba-8953-14e7b1da7c83}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION LogMessage : BOOL
 VAR_INPUT
@@ -16,15 +16,5 @@ END_VAR]]></Declaration>
 
 ADSLOGSTR(eType OR ADSLOG_MSGTYPE_LOG, sLogMessage, '');]]></ST>
     </Implementation>
-    <LineIds Name="LogMessage">
-      <LineId Id="17" Count="0" />
-      <LineId Id="21" Count="0" />
-      <LineId Id="25" Count="0" />
-      <LineId Id="29" Count="0" />
-      <LineId Id="33" Count="0" />
-      <LineId Id="38" Count="0" />
-      <LineId Id="16" Count="0" />
-      <LineId Id="7" Count="0" />
-    </LineIds>
   </POU>
 </TcPlcObject>

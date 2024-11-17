@@ -19,7 +19,7 @@
     <Company>Tom Oyen</Company>
     <Released>false</Released>
     <Title>HomePLC Logging</Title>
-    <ProjectVersion>1.0</ProjectVersion>
+    <ProjectVersion>1.0.1</ProjectVersion>
     <DefaultNamespace>
     </DefaultNamespace>
     <Placeholder>
@@ -44,12 +44,14 @@
     </Compile>
     <Compile Include="POUs\class_Tc3Eventlogger.TcPOU">
       <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
     </Compile>
     <Compile Include="POUs\E_MessageType.TcTLEO">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\LogMessage.TcPOU">
       <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
     </Compile>
     <Compile Include="Project Information\F_GetCompany.TcPOU">
       <SubType>Code</SubType>
